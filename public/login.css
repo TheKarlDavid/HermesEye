@@ -48,7 +48,7 @@ body {
 
 .button-box h1 {
   padding: 10px 30px;
-  cursor: pointer;
+  /* cursor: pointer; */
   background: transparent;
   border: 0;
   outline: none;
