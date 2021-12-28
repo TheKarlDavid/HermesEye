@@ -1,7 +1,33 @@
 // const { body, validationResult } = require('express-validator')
 // const bcrypt = require("bcryptjs")
+//sql
+const express = require("express")
+const app = express()
+const path = require('path');
+const mysql = require('mysql')
+app.set('views', path.join(__dirname, 'views'));
 
 exports.getIndex = (req, res)=>{
+
+    //connect to SQL
+    const connection = mysql.createConnection({
+        host: 'hermes-eye.c5rtjx1kw1dq.us-east-2.rds.amazonaws.com',
+        user: 'admin',
+        password: '2005B230bc',
+        database: 'hermes_eye'
+    });
+
+    connection.connect((err) => {
+        if (err) throw err;
+        console.log('Connected!');
+    });
+
+    connection.query("SELECT * FROM trucks", (err, rows) => {
+        if(err) throw err;
+
+        console.log(rows);
+        res.render('orders', {rows: rows});
+    });
 
     if(req.session.username){
 
