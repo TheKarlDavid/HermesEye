@@ -55,8 +55,19 @@ exports.getLogin = async (req,res)=>{
     if(remember_me){    
         req.session.cookie.maxAge = 1000 * 3600 * 24 * 30
     }
+
     
-    res.redirect("/")
+    connection.query(`SELECT * FROM users WHERE username = '${req.body.username}' AND password = '${req.body.password}' `, (err, row) => {
+        if(err) throw err;
+
+        console.log(row[0].username);
+        res.render("home.hbs", {
+            username: req.session.username,
+            password: req.session.password
+        })
+    });
+    
+    // res.redirect("/")
   
 }
 
