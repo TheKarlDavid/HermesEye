@@ -22,19 +22,20 @@ connection.connect((err) => {
 
 exports.getIndex = (req, res)=>{
 
-    connection.query("SELECT * FROM users", (err, rows) => {
-        if(err) throw err;
-
-        console.log(rows);
-        res.render('orders', {rows: rows});
-    });
-
     if(req.session.username){
 
-        res.render("home.hbs", {
-            username: req.session.username,
-            password: req.session.password
-        })
+        connection.query(`SELECT SUM(readStatus) AS notifs FROM adminNotif WHERE username = '${req.session.username}' `, (err, row) => {
+            if(err) throw err;
+            
+            req.session.notifs = row[0].notifs;
+
+            res.render("home.hbs", {
+                firstname: req.session.firstname,
+                lastname: req.session.lastname,
+                notifs : req.session.notifs
+            })
+        });
+
     }
     else{
         // the user has not registered or logged
@@ -45,8 +46,8 @@ exports.getIndex = (req, res)=>{
 }
 
 exports.getLogin = async (req,res)=>{
-    let username = req.body.username
-    let password = req.body.password
+    // let username = req.body.username
+    // let password = req.body.password
     let remember_me = req.body.remember
 
     req.session.username = req.body.username
@@ -60,14 +61,19 @@ exports.getLogin = async (req,res)=>{
     connection.query(`SELECT * FROM users WHERE username = '${req.body.username}' AND password = '${req.body.password}' `, (err, row) => {
         if(err) throw err;
 
-        console.log(row[0].username);
+        console.log(row);
+        req.session.firstname = row[0].firstname
+        req.session.lastname = row[0].lastname
+
         res.render("home.hbs", {
-            username: req.session.username,
-            password: req.session.password
+            firstname: req.session.firstname,
+            lastname: req.session.lastname
         })
+
+        res.redirect("/")
     });
     
-    // res.redirect("/")
+    
   
 }
 
@@ -78,7 +84,9 @@ exports.getHome = (req, res)=>{
 
 exports.getOrders = (req, res)=>{
 
-    res.render("orders.hbs")
+    res.render("orders.hbs", {
+        notifs : req.session.notifs
+    })
 }
 
 exports.getNotifications = (req, res)=>{
@@ -88,5 +96,7 @@ exports.getNotifications = (req, res)=>{
 
 exports.getProfile = (req, res)=>{
 
-    res.render("profile.hbs")
+    res.render("profile.hbs", {
+        notifs : req.session.notifs
+    })
 }

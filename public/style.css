@@ -91,6 +91,40 @@ nav ul li:hover > ul {
   visibility: visible;
 }
 
+/* NOTIFICATION BUTTON */
+.li-notifications:hover .icon-button {
+  cursor: pointer;
+  background: #7acdf1;
+}
+
+.icon-button {
+  display: inline-block;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #333333;
+  background: #dddddd;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+
+.icon-button-badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
 @media all and (max-width: 968px) {
   nav ul {
     margin-right: 0px;

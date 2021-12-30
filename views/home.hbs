@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="home.css">
 
@@ -17,7 +18,14 @@
           <ul class="navlist">
             <li><a href="home" method="get">Home</a></li>
             <li><a href="orders" method="get">Orders</a></li>
-            <li><a href="notifications" method="get">Notifications</a></li>
+            <li class="li-notifications">
+                <a href="notifications" method="get">Notifications
+                    <button type="button" class="icon-button">
+                        <span class="material-icons">notifications</span>
+                        <span class="icon-button-badge">{{notifs}}</span>
+                    </button>
+                </a>
+            </li>
             <li><a href="profile" method="get">Profile</a></li>
           </ul>
         </nav>
@@ -25,7 +33,7 @@
       
       <main>
         <div class="home-banner">
-            <h1 class="banner">WELCOME<br>{{username}} {{password}}</h1>
+            <h1 class="banner">WELCOME<br>{{firstname}} {{lastname}}</h1>
         </div>
 
 
@@ -34,5 +42,44 @@
       <!-- partial -->
       <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
       <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script><script  src="./home.js"></script> -->
+
+      <script>
+        /*
+        //Side Notification Code
+        function showNotification(){
+          const notification = new Notification("New message from dcode!", {
+              body: "Notficatiohn example for Hermes Eye?"
+          });
+
+          
+          notification.onclick = (e) =>{
+            console.log("Here");
+            window.location.href = "https://www.google.com";
+          };
+
+        notification.onclick = function (event) {
+            console.log('Notification clicked.');
+        } 
+          
+          
+        }
+
+        // default, granted, denied
+        console.log(Notification.permission);
+
+        if (Notification.permissionT=== "granted") {
+          // alert("we have permission!");
+            showNotification();
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(permission => {
+            // console.log(permission);
+            if (permission === "granted"){
+              showNotification();
+            }
+          });
+        }
+         */    
+      </script>
+
 </body>
 </html>
