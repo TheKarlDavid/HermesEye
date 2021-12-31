@@ -6,3 +6,58 @@ main {
   color: #1b3c65;
   text-transform: uppercase;
 }
+
+/* .no-notification {
+  width: 100%;
+  color: #899663;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+} */
+
+.notification-container {
+  background-color: #ecf9f2;
+  border-radius: 15px;
+  margin: 5px 20px 0px 20px;
+}
+
+.notification-container:nth-child(1) {
+  margin-top: 50px;
+}
+
+/* .notification-container:not(:last-child) {
+  margin-bottom: 90px;
+} */
+
+.notification-container:last-child {
+  margin-bottom: 50px;
+}
+
+.notification-head {
+  display: grid;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.notification-head span.material-icons {
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  font-size: 48px;
+}
+
+.order-number {
+  display: inline-block;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0 20px 10px;
+}
+
+.desc {
+  font-size: 20px;
+  padding: 5px 20px 0px;
+}

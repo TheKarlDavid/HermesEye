@@ -8,12 +8,12 @@ const hbs = require("hbs")
 const { runInNewContext } = require("vm")
 
 const userRoute = require('./routes/userRoute')
-const adminRoute = require('./routes/adminRoute')
+const clientRoute = require('./routes/clientRoute')
 
 app.set("view engine", "hbs")
 
-hbs.registerHelper('if_equal', function(a, b, opts) {
-    if (a == b) {
+hbs.registerHelper('if_greater', function(a, b, opts) {
+    if (a > b) {
         return opts.fn(this)
     } else {
         return opts.inverse(this)
@@ -34,7 +34,7 @@ app.use(session({
 }))
 
 app.use(userRoute)
-app.use(adminRoute)
+app.use(clientRoute)
 app.use(express.static(__dirname + "/public"))
 
 app.listen(3000, function () {

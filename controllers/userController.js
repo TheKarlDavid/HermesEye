@@ -91,7 +91,9 @@ exports.getOrders = (req, res)=>{
 
 exports.getNotifications = (req, res)=>{
 
-    res.render("notifications.hbs")
+    res.render("notifications.hbs", {
+        notifs : 0
+    })
 }
 
 exports.getProfile = (req, res)=>{
