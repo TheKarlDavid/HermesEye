@@ -7,46 +7,59 @@ main {
   text-transform: uppercase;
 }
 
-/* .no-notification {
-  width: 100%;
-  color: #899663;
+.no-notification {
+  color: black;
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  background: white;
+  background: #c3e0e5;
   padding: 15px;
   border-radius: 5px;
-} */
+  margin: 5px 25px 0px 25px;
+}
 
 .notification-container {
-  background-color: #ecf9f2;
+  background-color: #7acdf1;
+  color: #1b3c65;
   border-radius: 15px;
-  margin: 5px 20px 0px 20px;
+  margin: 5px 25px 0px 25px;
+}
+
+.notification-container:hover {
+  background-color: #02acf5;
+
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-property: all;
 }
 
 .notification-container:nth-child(1) {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
-/* .notification-container:not(:last-child) {
-  margin-bottom: 90px;
-} */
-
 .notification-container:last-child {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+}
+
+.notification-link {
+  text-decoration: none;
+  /* color: #1b3c65;
+  background-color: #1b3c65; */
 }
 
 .notification-head {
-  display: grid;
   padding: 20px;
   margin-bottom: 15px;
 }
 
 .notification-head span.material-icons {
   display: inline-block;
-  height: 48px;
-  width: 48px;
-  font-size: 48px;
+  position: absolute;
+  right: 5%;
+  height: 70px;
+  width: 70px;
+  font-size: 70px;
+  color: #1b3c65;
 }
 
 .order-number {
@@ -57,7 +70,9 @@ main {
   padding: 0 20px 10px;
 }
 
-.desc {
-  font-size: 20px;
+.order-status {
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
   padding: 5px 20px 0px;
 }

@@ -91,9 +91,31 @@ exports.getOrders = (req, res)=>{
 
 exports.getNotifications = (req, res)=>{
 
-    res.render("notifications.hbs", {
-        notifs : 0
-    })
+    if(req.session.username){
+        // res.render("notifications.hbs", {
+        //     notifs : 0
+        // })
+    
+        connection.query(`SELECT orderID, status, readStatus 
+                        FROM hermes_eye.adminNotif
+                        WHERE username="${req.session.username}"
+                        AND readStatus <> 0
+                        ORDER BY notifID DESC;`, (err, rows) => {
+            if(err) throw err;
+            
+            console.log(rows);
+    
+            res.render("notifications.hbs", {
+                notifs : 0,
+                notifications: rows
+
+            })
+        });
+    }
+    else{
+        res.render("login.hbs") 
+    }
+    
 }
 
 exports.getProfile = (req, res)=>{
