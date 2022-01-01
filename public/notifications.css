@@ -59,7 +59,8 @@ main {
   height: 70px;
   width: 70px;
   font-size: 70px;
-  color: #1b3c65;
+  /* color: #1b3c65; */
+  color: #116530;
 }
 
 .order-number {

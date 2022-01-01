@@ -20,6 +20,10 @@ hbs.registerHelper('if_greater', function(a, b, opts) {
     }
 })
 
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
 app.use(bodyparser.urlencoded({
     extended:false
 }))
