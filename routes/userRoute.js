@@ -10,5 +10,6 @@ routes.get("/notifications", userController.getNotifications)
 routes.get("/registration", userController.getRegistration)
 routes.post("/register", userController.getRegister)
 routes.get("/profile", userController.getProfile)
+routes.get("/signout", userController.getSignout)
 
 module.exports = routes

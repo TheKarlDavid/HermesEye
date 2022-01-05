@@ -295,3 +295,8 @@ exports.getProfile = (req, res)=>{
         res.redirect("/") 
     }
 }
+
+exports.getSignout = (req,res)=>{
+    req.session.destroy()
+    res.redirect("/")
+}
